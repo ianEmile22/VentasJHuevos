@@ -20,18 +20,26 @@ namespace VentasWeb.Controllers
         [HttpPost]
         public ActionResult Index(string correo, string clave)
         {
-
-            Usuario ousuario = CD_Usuario.Instancia.ObtenerUsuarios().Where(u => u.Correo == correo && u.Clave == Encriptar.GetSHA256(clave) ).FirstOrDefault();
-
-            if (ousuario == null)
+            try
             {
-                ViewBag.Error = "Usuario o contraseña no correcta";
-                return View();
+                Usuario ousuario = CD_Usuario.Instancia.ObtenerUsuarios().Where(u => u.Correo == correo && u.Clave == Encriptar.GetSHA256(clave)).FirstOrDefault();
+
+                if (ousuario == null)
+                {
+                    ViewBag.Error = "Usuario o contraseña no correcta";
+                    return View();
+                }
+
+                Session["Usuario"] = ousuario;
+
+                return RedirectToAction("Index", "Home");
             }
-
-            Session["Usuario"] = ousuario;
-
-            return RedirectToAction("Index", "Home");
+            
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Ocurrió un error. Por favor, inténtalo de nuevo.";
+                return View("Error");
+            }
         }
     }
 }

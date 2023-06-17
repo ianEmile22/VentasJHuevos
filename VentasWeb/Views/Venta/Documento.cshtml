@@ -44,7 +44,7 @@
 <body>
     <div style="font-size: 11px; text-align: right;">
         <center>
-            <button type="button" id="Imprimir" class="btn btn-secondary" onclick="javascript:imprSelec('seleccion')"><i class="fas fa-print"></i> Imprimir</button>
+            <button type="button" id="Imprimir" class="btn btn-secondary" onclick="window.print('seleccion')"><i class="fas fa-print"></i> Imprimir</button>
         </center>
         <br>
     </div>
@@ -55,21 +55,35 @@
                     <td>
                         <table id="cabezera">
                             <tr>
-                                <td style="width:140px">
-                                    <img src="@Url.Content("~/Imagenes/tienda.png")" alt="" height="70">
-                                </td>
+
                                 <td style="width:290px">
                                     <table style="width:100%">
-                                        <tr><td><label style="font-size:16px;font-weight:bold;text-align:center;width:100%;display:block">MI TIENDA ONLINE S.A.C TEST</label></td></tr>
-                                        <tr><td colspan="4" align="center" style="font-size:14px">Atendido por: <span>@Html.DisplayTextFor(model => model.oUsuario.Nombres) @Html.DisplayTextFor(model => model.oUsuario.Apellidos)</span></td> </tr>
-                                        <tr><td colspan="4" align="center" style="font-size:14px"><span>@Html.DisplayTextFor(model => model.oTienda.Direccion)</span></td> </tr>
+                                        <tr><td><label style="font-size:14px;font-weight:bold;text-align:left;width:100%;display:block">JULIO ANTONIO GARCÍA RODRÍGUEZ</label></td></tr>
+                                        <tr><td colspan="4" align="left" style="font-size:13px">HUEVOS JG</td> </tr>
+                                        <tr><td colspan="4" align="left" style="font-size:13px">C/DR. Betances. No. 145, Mej. Social, Sto. Dgo, D.N</td> </tr>
+                                        <tr><td colspan="4" align="left" style="font-size:13px">Tel: 809-538-8068 / Cel: 809-399-0143</td> </tr>
+                                        <tr><td colspan="4" align="left" style="font-size:13px">RNC/CÉDULA: 001-02379765</td> </tr>
+                                        <td> Fecha: <span>@Html.DisplayTextFor(model => model.FechaRegistro)</span> </td>
                                     </table>
                                 </td>
-                                <td style="width:200px;">
-                                    <table style="width: 100%; height: 100px; font-weight: bold;border:2px solid #17a2b8;font-size:14px ">
-                                        <tr><td align="center">R.U.C. <span>@Html.DisplayTextFor(model => model.oTienda.RUC)</span></td></tr>
-                                        <tr style="color:#fff;background-color:#17a2b8; -webkit-print-color-adjust: exact;font-size:16px !important"><td align="center"><span>@Html.DisplayTextFor(model => model.TipoDocumento)</span></td></tr>
-                                        <tr><td align="center">NRO - <span>@Html.DisplayTextFor(model => model.Codigo)</span> </td></tr>
+                                <td style="width:230px; position:relative; left:80px">
+                                    <table style="width: 100%; height: 100px; font-weight: bold;border:2px solid #17a2b8;font-size:14px; border-collapse:collapse ">
+                                        
+                                        <tr>
+                                            <td colspan="4" style="font-size: 12px; padding-left: 5px">FACTURA DE CRÉDITO FISCAL</td>
+                                        </tr>
+
+                                        <tr >
+                                        <td align="left" style="border: 2px solid #17a2b8; width: 50%; padding-left: 5px ">NCF: </td>
+                                        <td align="left" style="border: 2px solid #17a2b8; width: 50%; padding-left:5px">B<span>@Html.DisplayTextFor(model => model.Codigo)</span></td>
+                                        
+                                        </tr>
+
+                                        <tr>
+                                            <td align="left"style="border: 2px solid #17a2b8; width: 50%; padding-left: 5px ">Valido hasta:</td>
+                                            <td align="left"style="border: 2px solid #17a2b8; width: 50%; padding-left: 5px ">31/12/2024</td>
+                                        
+                                        </tr>
                                     </table>
                                 </td>
                             </tr>
@@ -82,29 +96,30 @@
                     <td>
                         <table style=" width: 100%;" border="0">
                             <tr>
-                                <td colspan="1" style="width:50px !important">Cliente:</td>
-                                <td colspan="5" style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.oCliente.Nombre)</span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1" style="width:50px !important">Direccion:</td>
+                                <td style="width: 50px; font-size: 12px;padding:5px">RNC/CÉDULA CLIENTE:</td>
+                                <td style="border-bottom:1px solid #000;border-collapse:collapse"><span>@Html.DisplayTextFor(model => model.oCliente.NumeroDocumento)</span></td>
+
+                                <td colspan="1" style="width:50px !important;">Direccion:</td>
                                 <td colspan="5" style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.oCliente.Direccion)</span></td>
                             </tr>
                             <tr>
-                                <td style="width:50px">Nro.Documento:</td>
-                                <td style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.oCliente.NumeroDocumento)</span></td>
-                                <td style="width:50px"> Telefono:</td>
+                                <td colspan="1" style="width: 50px !important; padding: 5px">NOMBRE:</td>
+                                <td colspan="5" style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.oCliente.Nombre)</span></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50px; padding: 5px"> Telefono:</td>
                                 <td style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.oCliente.Telefono)</span></td>
-                                <td style="width:50px"> Fecha:</td>
-                                <td style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.FechaRegistro)</span></td>
+
+                                <td style="width:50px"> Condiciones: </td>
+                                <td style="border-bottom:1px solid #000"><select><option value="opcion1">Crédito</option><option value="opcion2">Al contado</option></select></td>
+
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr><td><hr /></td></tr>
-                <tr style="color:#fff;background-color:#17a2b8; -webkit-print-color-adjust: exact;">
-                    <td style="padding:4px">
-                        <u>Detalle Productos</u>
-                    </td>
+                <tr style=" -webkit-print-color-adjust: exact;">
+
                 </tr>
                 <tr>
                     <td>
@@ -112,19 +127,21 @@
                             <thead>
                                 <tr style="color:#fff;background-color:#17a2b8; -webkit-print-color-adjust: exact;">
                                     <th style="width: 15%;">Cantidad</th>
-                                    <th style="width: 45%;">Descripcion</th>
-                                    <th style="width: 20%;">P.Unit</th>
-                                    <th style="width: 20%;">Importe Total</th>
+                                    <th style="width: 25%;">Descripcion</th>
+                                    <th style="width: 25%;">Precio Unitario</th>
+                                    <th style="width: 10%;">ITBIS</th>
+                                    <th style="width: 25%;">SubTotal</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model.oListaDetalleVenta)
                                 {
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.NombreProducto)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.TextoPrecioUnidad)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.TextoImporteTotal)</td>
+                                        <td align="center">@Html.DisplayFor(modelItem => item.Cantidad)</td>
+                                        <td align="center">@Html.DisplayFor(modelItem => item.NombreProducto)</td>
+                                        <td align="center">@Html.DisplayFor(modelItem => item.TextoPrecioUnidad)</td>
+                                        <td align="center">0</td>
+                                        <td align="center">@Html.DisplayFor(modelItem => item.TextoImporteTotal)</td>
                                     </tr>
                                 }
                             </tbody>
@@ -137,20 +154,25 @@
                         <table style="font-weight: bold; width:100%">
                             <tr>
                                 <td colspan="4">
-                                    <table width='250' style="border:1px solid #17a2b8;">
-                                        <tr style="border:1px solid #17a2b8;">
-                                            <td style="color:#fff;background-color:#17a2b8; -webkit-print-color-adjust: exact;">Pago con S/.</td>
-                                            <td><span>@Html.DisplayTextFor(model => model.TextoImporteRecibido)</span></td>
-                                            <td style="color:#fff;background-color:#17a2b8; -webkit-print-color-adjust: exact;">Cambio S/.</td>
-                                            <td><span>@Html.DisplayTextFor(model => model.TextoImporteCambio)</span></td>
+                                    <table width='250' style="margin-bottom:50px">
+                                        <tr style="border:1px solid #17a2b8; margin-bottom:5px">
+
+                                            <td>Entregado por:</td>
+                                            
+                                            <td style="position:absolute;">Recibido por:</td>
+
                                         </tr>
                                     </table>
                                 </td>
                                 <td colspan="2" align="right">
-                                    <table style="font-weight: bold; width: 150px;border:1px solid #17a2b8;">
+                                    <table style="font-weight: bold; width: 150px; border: 2px solid #17a2b8; border-collapse: collapse">
+                                        <tr>
+                                            <td style="border: 1px solid #17a2b8; ">Descuento</td>
+                                            <td style="color:#fff;background-color:#17a2b8; -webkit-print-color-adjust: exact;border:1px solid #17a2b8;"><span id="montopago">@Html.DisplayTextFor(model => model.TextoImporteRecibido)</span>  DOP</td>
+                                        </tr>
                                         <tr>
                                             <td>Total S/.</td>
-                                            <td style="color:#fff;background-color:#17a2b8; -webkit-print-color-adjust: exact;border:1px solid #17a2b8;"><span id="totalcosto">@Html.DisplayTextFor(model => model.TextoTotalCosto)</span></td>
+                                            <td style="color:#fff;background-color:#17a2b8; -webkit-print-color-adjust: exact;border:1px solid #17a2b8;"><span id="totalcosto">@Html.DisplayTextFor(model => model.TotalCosto)</span> DOP</td>
                                         </tr>
                                     </table>
                                 </td>

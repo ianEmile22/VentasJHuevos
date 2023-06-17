@@ -314,7 +314,7 @@ $('#btnTerminarGuardarVenta').on('click', function () {
         return;
     }
 
-    //VALIDACIONES DE MONTO PAGO
+    ////VALIDACIONES DE MONTO PAGO
     if ($("#txtmontopago").val().trim() == "") {
         swal("Mensaje", "Ingrese el monto de pago", "warning");
         return;
@@ -443,11 +443,17 @@ $('#btnTerminarGuardarVenta').on('click', function () {
 
 function calcularCambio() {
     var montopago = $("#txtmontopago").val().trim() == "" ? 0 : parseFloat($("#txtmontopago").val().trim());
-    var totalcosto = parseFloat($("#txttotal").val().trim());
+    var totalcosto = parseFloat($("#txttotal").val().trim());  
     var cambio = 0;
+   
     cambio = (montopago <= totalcosto ? totalcosto : montopago) - totalcosto;
 
-    $("#txtcambio").val(cambio.toFixed(2));
+   
+
+    /*//$("#txtcambio").val(cambio.toFixed(2));*/
+
+   
+
 }
 
 $('#btncalcular').on('click', function () {

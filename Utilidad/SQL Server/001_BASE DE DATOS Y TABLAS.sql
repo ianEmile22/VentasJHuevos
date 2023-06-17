@@ -1,12 +1,13 @@
 go
 use master
 go
-IF NOT EXISTS(SELECT name FROM master.dbo.sysdatabases WHERE NAME = 'DBVENTAS_WEB')
-CREATE DATABASE DBVENTAS_WEB
+IF NOT EXISTS(SELECT name FROM master.dbo.sysdatabases WHERE NAME = 'DBVENTAS_WEBO')
+CREATE DATABASE DBVENTAS_WEBO
 
 GO 
 
-USE DBVENTAS_WEB
+
+USE DBVENTAS_WEBO
 
 GO
 
@@ -116,6 +117,11 @@ FechaRegistro datetime default getdate()
 go
 
 
+
+
+
+
+
 --(8) TABLA PRODUCTO
 if not exists (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'PRODUCTO')
 create table PRODUCTO(
@@ -138,8 +144,8 @@ create table PRODUCTO_TIENDA(
 IdProductoTienda int primary key identity(1,1),
 IdProducto int references PRODUCTO(IdProducto),
 IdTienda int references TIENDA(IdTienda),
-PrecioUnidadCompra decimal(18,2) default 0,
-PrecioUnidadVenta decimal(18,2) default 0,
+PrecioUnidadCompra float default 0,
+PrecioUnidadVenta float default 0,
 Stock bigint default 0,
 Activo bit default 1,
 Iniciado bit default 0,
@@ -162,6 +168,7 @@ FechaRegistro datetime default getdate()
 )
 
 go
+
 
 --(10) TABLA DETALLE_COMPRA
 if not exists (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'DETALLE_COMPRA')

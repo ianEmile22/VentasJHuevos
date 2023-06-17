@@ -1,5 +1,5 @@
 go
-use DBVENTAS_WEB
+use DBVENTAS_WEBO
 go
 --************************ VALIDAMOS SI EXISTE EL PROCEDIMIENTO ************************--
 

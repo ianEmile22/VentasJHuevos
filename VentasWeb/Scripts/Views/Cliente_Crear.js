@@ -1,4 +1,26 @@
 ﻿
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Obtiene el campo de entrada por su ID
+    const input = document.getElementsByName('Telefono');
+
+    // Expresión regular para el formato de teléfono
+    const regex = /^(\+\d{1,3}\s?)?(\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/;
+
+    // Función para aplicar el formato al campo de entrada
+    const formatPhoneNumber = () => {
+        const phoneNumber = input.value.trim();
+        if (phoneNumber.match(regex)) {
+            // Elimina cualquier formato existente y aplica el formato deseado
+            const formattedPhoneNumber = phoneNumber.replace(/\D/g, '').replace(regex, '($2) $3-$4');
+            input.value = formattedPhoneNumber;
+        }
+    };
+
+    // Agrega el evento de cambio y clave para aplicar el formato
+    input.addEventListener('input', formatPhoneNumber);
+    input.addEventListener('keyup', formatPhoneNumber);
+});
+
 var tabladata;
 $(document).ready(function () {
     activarMenu("Clientes");

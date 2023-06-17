@@ -48,12 +48,22 @@ namespace VentasWeb.Controllers
                                                  PrecioUnidad = dv.PrecioUnidad,
                                                  TextoPrecioUnidad = dv.PrecioUnidad.ToString("N", formato), //numero.ToString("C", formato)
                                                  ImporteTotal = dv.ImporteTotal,
-                                                 TextoImporteTotal = dv.ImporteTotal.ToString("N", formato)
+                                                 TextoImporteTotal = dv.ImporteTotal.ToString("N", formato),                                     
+                                                 
                                              }).ToList();
 
-                oVenta.TextoImporteRecibido = oVenta.ImporteRecibido.ToString("N", formato);
-                oVenta.TextoImporteCambio = oVenta.ImporteCambio.ToString("N", formato);
-                oVenta.TextoTotalCosto = oVenta.TotalCosto.ToString("N", formato);
+                oVenta.TextoImporteRecibido = oVenta.ImporteRecibido;
+                oVenta.TextoImporteCambio = oVenta.ImporteCambio;
+                oVenta.TextoTotalCosto = oVenta.TotalCosto;
+
+                oVenta.TotalCosto = oVenta.TextoTotalCosto - oVenta.TextoImporteRecibido;
+                
+
+
+
+
+
+
             }
                
 
