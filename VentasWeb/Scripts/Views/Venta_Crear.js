@@ -316,7 +316,7 @@ $('#btnTerminarGuardarVenta').on('click', function () {
 
     ////VALIDACIONES DE MONTO PAGO
     if ($("#txtmontopago").val().trim() == "") {
-        swal("Mensaje", "Ingrese el monto de pago", "warning");
+        swal("Mensaje", "Ingrese el monto de descuento", "warning");
         return;
     }
 
@@ -414,7 +414,7 @@ $('#btnTerminarGuardarVenta').on('click', function () {
                 $("#txtigv").val("0");
                 $("#txttotal").val("0");
                 $("#txtmontopago").val("");
-                $("#txtcambio").val("");
+                $("#txtcambio").val("0");
 
 
                 $("#tbVenta tbody").html("");
