@@ -75,7 +75,7 @@
 
                                         <tr >
                                         <td align="left" style="border: 2px solid #17a2b8; width: 50%; padding-left: 5px ">NCF: </td>
-                                        <td align="left" style="border: 2px solid #17a2b8; width: 50%; padding-left:5px">B<span>@Html.DisplayTextFor(model => model.Codigo)</span></td>
+                                        <td align="left" style="border: 2px solid #17a2b8; width: 50%; padding-left:5px">B0100<span>@Html.DisplayTextFor(model => model.Codigo)</span></td>
                                         
                                         </tr>
 
@@ -96,15 +96,19 @@
                     <td>
                         <table style=" width: 100%;" border="0">
                             <tr>
+                                <td colspan="1" style="width: 50px !important; padding: 5px">NOMBRE:</td>
+                                <td colspan="5" style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.oCliente.Nombre)</span></td>
+
+                            </tr>
+                            <tr>
+
                                 <td style="width: 50px; font-size: 12px;padding:5px">RNC/CÉDULA CLIENTE:</td>
                                 <td style="border-bottom:1px solid #000;border-collapse:collapse"><span>@Html.DisplayTextFor(model => model.oCliente.NumeroDocumento)</span></td>
 
+
                                 <td colspan="1" style="width:50px !important;">Direccion:</td>
                                 <td colspan="5" style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.oCliente.Direccion)</span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1" style="width: 50px !important; padding: 5px">NOMBRE:</td>
-                                <td colspan="5" style="border-bottom:1px solid #000"><span>@Html.DisplayTextFor(model => model.oCliente.Nombre)</span></td>
+
                             </tr>
                             <tr>
                                 <td style="width: 50px; padding: 5px"> Telefono:</td>
